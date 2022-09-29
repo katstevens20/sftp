@@ -1,0 +1,31 @@
+version: '3.3'
+
+services:
+
+  phpcli70:
+    container_name: batch-php7.0
+    build:
+      context: .
+    command: /app/vendor/bin/phpunit tests
+    depends_on:
+      - sftp
+    volumes:
+      - ./ssh_host_ed25519_key:/root/.ssh/keys/ssh_host_ed25519_key:ro
+    networks:
+      - net_sftp
+
+  sftp:
+    container_name: sftp
+    image: atmoz/sftp:alpine-3.7
+    command: foo:pass:1001
+    ports:
+      - "22:22"
+    volumes:
+      - ./upload:/home/foo/upload
+      - ./ssh_host_ed25519_key.pub:/home/foo/.ssh/keys/ssh_host_ed25519_key.pub:ro
+    networks:
+      - net_sftp
+
+networks:
+  net_sftp:
+    driver: bridge

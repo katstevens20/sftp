@@ -1,0 +1,32 @@
+{
+  "name": "coyote/alertdatex",
+  "description": "Génération des flux datex (xml) et envoi au serveur SFTP",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Khalid Atlassi",
+      "email": "katlassi_ext@coyote-group.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "coyote\\alertdatex\\": "src/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*",
+    "phpseclib/phpseclib": "*"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "tests\\": "tests/"
+    }
+  },
+  "config": {
+    "allow-plugins": true,
+    "platform": {
+      "php": "7.0"
+    }
+  }
+}
